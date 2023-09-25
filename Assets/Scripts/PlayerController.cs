@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f; 
     public float thrust = 10f; 
     private Rigidbody2D rgbd; 
-   
+    private Vector3 respawnPoint; 
+    public GameObject fallDetector; 
 
  
     //private bool isFacingRight = true; 
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {   
         rgbd = GetComponent<Rigidbody2D>(); 
- 
+        respawnPoint = transform.position; 
 
     }
 
@@ -35,6 +36,9 @@ public class PlayerController : MonoBehaviour
             
         }
 
+
+        //fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);  
+
         
 
         
@@ -46,11 +50,23 @@ public class PlayerController : MonoBehaviour
     }
 
 
- 
+    
     void Jump(){
         rgbd.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse); 
     }
 
+    //Whenever a collision is detected 
+    void OnTriggerEnter2D(Collider2D collision)
+    {   //respawn player back to starting point if hit with the fallDetector or an obstacle spike
+        if(collision.tag == "FallDetector" || collision.tag == "Obstacle")
+        {
+            transform.position = respawnPoint; 
+        }
+        if(collision.tag == "Finish"){
+            transform.position = respawnPoint; 
+        }
+        
+    }
 
    
 
