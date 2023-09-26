@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 3173134642708558940}
   - component: {fileID: 3173134642708558941}
   - component: {fileID: 3173134642708558942}
-  - component: {fileID: 3173134642708558931}
+  - component: {fileID: 6980957353555554870}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -307,7 +307,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3173134642708558931
+--- !u!114 &6980957353555554870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,6 +322,10 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 100
   thrust: 10
+  ground_layers:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 5
 --- !u!1 &3173134642746351058
 GameObject:
   m_ObjectHideFlags: 0
