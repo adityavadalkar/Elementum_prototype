@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {    
@@ -62,11 +63,22 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = respawnPoint; 
         }
+        
         if(collision.tag == "Finish"){
-            transform.position = respawnPoint; 
+
+           
+            StartCoroutine(RespawnPlayer(0.75f));
+           
         }
         
     }
+     IEnumerator RespawnPlayer(float delay)
+    {
+         yield return new WaitForSeconds(delay);
+         transform.position = respawnPoint; 
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    } 
+
 
    
 
